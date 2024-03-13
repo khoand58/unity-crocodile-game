@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject popupGameover;
+    private GameObject popupGameover, crocBite;
 
     [SerializeField]
     private GameObject[] toothArr;
@@ -16,10 +16,12 @@ public class MainController : MonoBehaviour
     void Start(){
         decayToothIndex = Random.Range(0, 10);
         popupGameover.SetActive(false);
+        crocBite.SetActive(false);
     }
 
     public void onClickTooth(int toothIndex){
         if(toothIndex == decayToothIndex){
+            crocBite.SetActive(true);
             popupGameover.SetActive(true);
         } else {
             toothArr[toothIndex].SetActive(false);
@@ -31,6 +33,7 @@ public class MainController : MonoBehaviour
             toothArr[i].SetActive(true);
         }
         decayToothIndex = Random.Range(0, 10);
+        crocBite.SetActive(false);
         popupGameover.SetActive(false);
     }
 }
